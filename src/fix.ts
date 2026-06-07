@@ -11,6 +11,7 @@ export interface FixChange {
 export function suggestFixes(surface: Surface): FixChange[] {
   const out: FixChange[] = [];
   for (const t of surface.tools) {
+    if (!t.name) continue;
     if (!t.description || t.description.trim() === "") {
       const verbObject = t.name.replace(/[_-]+/g, " ");
       const params = t.inputSchema?.properties ? Object.keys(t.inputSchema.properties) : [];

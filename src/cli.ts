@@ -21,6 +21,8 @@ Options:
   --format <fmt>     pretty (default) | json | markdown
   --ci               Exit non-zero if score < --min-score or any error finding
   --min-score <n>    CI threshold (default 80)
+  --fix              (Pro) Suggest starter descriptions for tools that lack one
+  --license-key <k>  Pro license key (or set TOOLBUDGET_LICENSE_KEY env var)
   --max-tools <n>    Override the tool-count budget
   --token-budget <n> Override the token budget
   -h, --help         Show this help
