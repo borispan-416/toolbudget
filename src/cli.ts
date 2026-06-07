@@ -4,6 +4,7 @@ import { mergeConfig } from "./config.ts";
 import { loadStaticSurface } from "./introspect/static.ts";
 import { introspectStdio, introspectHttp } from "./introspect/live.ts";
 import { render, type Format } from "./report/index.ts";
+import { isProUnlocked } from "./license.ts";
 import type { Surface } from "./model.ts";
 
 const HELP = `toolbudget — know what your MCP tool surface costs an agent.
@@ -48,6 +49,8 @@ async function main(argv: string[]): Promise<number> {
       "min-score": { type: "string" },
       "max-tools": { type: "string" },
       "token-budget": { type: "string" },
+      fix: { type: "boolean", default: false },
+      "license-key": { type: "string" },
       help: { type: "boolean", short: "h", default: false },
     },
     allowPositionals: false,
@@ -71,6 +74,18 @@ async function main(argv: string[]): Promise<number> {
 
   const report = analyze(surface, config);
   process.stdout.write(render(report, (values.format as Format) ?? "pretty") + "\n");
+
+  if (values.fix) {
+    const unlocked = await isProUnlocked(typeof values["license-key"] === "string" ? values["license-key"] : process.env.TOOLBUDGET_LICENSE_KEY);
+    if (!unlocked) {
+      process.stderr.write("--fix is a Pro feature. Get a license at https://pancratic.dev.\n");
+      return 3;
+    }
+    const { suggestFixes } = await import("./fix.ts");
+    for (const change of suggestFixes(surface)) {
+      process.stdout.write(`fix ${change.tool}.${change.field}: ${change.suggestion}\n`);
+    }
+  }
 
   if (values.ci) {
     const hasError = report.findings.some((f) => f.severity === "error");
