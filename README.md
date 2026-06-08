@@ -134,7 +134,7 @@ reference server (`--format markdown`):
 | `--baseline` drift tracking | | ✓ |
 | SARIF reporter | | ✓ |
 
-Pro is a **one-time license** via the [Pancratic store](https://pancratic.dev): **$9 for individuals**, **$99 for a team / commercial license** (launch pricing). No subscription — buy once, own it.
+Pro is a **one-time license** — **$9 for individuals**, **$99 for a team / commercial license** (launch pricing). No subscription — buy once, own it. _Pro is coming soon; the store isn't open yet._
 
 ## How the score works
 
@@ -146,4 +146,4 @@ means real, fixable cost in tokens or agent reliability.
 
 ---
 
-Brought to you by [Pancratic](https://pancratic.dev).
+Brought to you by [Pancratic](https://github.com/pancratic).
