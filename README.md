@@ -134,7 +134,7 @@ reference server (`--format markdown`):
 | `--baseline` drift tracking | | ✓ |
 | SARIF reporter | | ✓ |
 
-Pro is **~$5/mo or $39 lifetime** via the [Pancratic store](https://pancratic.dev).
+Pro is a **one-time license** via the [Pancratic store](https://pancratic.dev): **$9 for individuals**, **$99 for a team / commercial license** (launch pricing). No subscription — buy once, own it.
 
 ## How the score works
 
