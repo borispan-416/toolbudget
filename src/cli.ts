@@ -80,7 +80,7 @@ async function main(argv: string[]): Promise<number> {
   if (values.fix) {
     const unlocked = await isProUnlocked(typeof values["license-key"] === "string" ? values["license-key"] : process.env.TOOLBUDGET_LICENSE_KEY);
     if (!unlocked) {
-      process.stderr.write("--fix is a Pro feature. Get a license at https://pancratic.dev.\n");
+      process.stderr.write("--fix is a Pro feature (coming soon). See https://github.com/pancratic/toolbudget.\n");
       return 3;
     }
     const { suggestFixes } = await import("./fix.ts");
